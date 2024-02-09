@@ -12,7 +12,6 @@ var config = {
 
 var game = new Phaser.Game(config);
 
-<<<<<<< HEAD
 function preload(){
     // carrega todas as imagens
     
@@ -50,3 +49,5 @@ function update(){
     //traz o submarino de volta quando ele sai da tela
     if (submarino.x > 1000) {
         submarino.x = -200
+    }
+}
