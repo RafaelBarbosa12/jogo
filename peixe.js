@@ -11,9 +11,10 @@ var config = {
 };
 
 var game = new Phaser.Game(config);
-var SubPos;
 
 function preload(){
+    // carrega todas as imagens
+    
     this.load.image('mar', 'assets/bg_azul-claro.png');
     this.load.image('vasco', 'assets/vasco.png')
     this.load.image('logo', 'assets/logo-inteli_azul.png');
@@ -24,6 +25,7 @@ function preload(){
 
 }
 function create(){  
+    //cria todas as imagens no jogo
     this.add.image(400, 300, 'mar');
     this.add.image(400, 525, 'logo').setScale(0.5);
     submarino = this.add.image(500, 205, 'submarino').setScale(0.3);
@@ -34,17 +36,19 @@ function create(){
     this.add.image(200, 550, 'alga').setScale(0.1);
     peixinho = this.add.image(400, 300, 'peixe');
     peixinho.setFlip(true, false);
+    submarino.setFlip(true, false);
 
 }
 function update(){ 
-    var SubPos = peixinho.x;
+    //determina a velocidade do submarino
+   var velocidade = 3;
+    submarino.x += velocidade;
+    //faz o peixe seguir o cursor do computador
     peixinho.x = this.input.x;
     peixinho.y = this.input.y;
-    submarino.x = peixinho.x;
-    if (peixinho.x < SubPos) {
-        submarino.setFlip(false, false);
-    } else if (peixinho.x > SubPos) {
-        submarino.setFlip(true, false);
+    //traz o submarino de volta quando ele sai da tela
+    if (submarino.x > 1000) {
+        submarino.x = -200
     }
 
     
